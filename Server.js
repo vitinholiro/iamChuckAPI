@@ -7,6 +7,10 @@ const port = 3000
 const bodyParser = require('body-parser')
 const helmet = require('helmet')
 
+// - Routes
+
+const { ChuckRoutes } = require('./Routes/ChuckAPI')
+
 // - Middlewares
 
 app.use(bodyParser.json())
@@ -14,6 +18,7 @@ app.use(helmet())
 
 // - Routes
 
+app.use('/chuck-api', ChuckRoutes);
 app.get('/', (req, res) => res.send('Hello World!'))
 
 // - Server

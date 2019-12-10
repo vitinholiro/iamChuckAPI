@@ -10,6 +10,7 @@ const helmet = require('helmet')
 // - Routes
 
 const { ChuckRoutes } = require('./Routes/ChuckAPI/Routes/ChuckAPI')
+const { BFFRoutes } = require('./Routes/BFFAPI/Routes/BFFAPI')
 
 // - Middlewares
 
@@ -19,6 +20,7 @@ app.use(helmet())
 // - Routes
 
 app.use('/chuck-api', ChuckRoutes);
+app.use('/bff-api', BFFRoutes);
 app.get('/', (req, res) => res.send('Hello World!'))
 
 // - Server

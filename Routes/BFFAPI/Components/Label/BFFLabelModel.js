@@ -14,3 +14,5 @@ class BFFLabelProperties {
     size = 0
     weight = ""
 }
+
+module.exports = BFFLabelModel

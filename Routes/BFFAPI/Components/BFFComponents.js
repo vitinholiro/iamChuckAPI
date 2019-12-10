@@ -1,9 +1,13 @@
 
+const BFFLabel = require('./Label/BFFLabel')
 
 class BFFComponents {
 
+    constructor() {}
 
-    generateLabelWith(value, properties) {
-        return BFFLabel().generateLabelWith(value, properties)
+    static generateLabelWith(value, properties) {
+        return BFFLabel.generateWith(value, properties)
     }
 }
+
+module.exports = BFFComponents

@@ -1,7 +1,11 @@
 
+const BFFLabelModel = require('./BFFLabelModel')
+
 class BFFLabel {
 
-    generateWith(value, properties) {
+    static generateWith(value, properties) {
         return new BFFLabelModel(value, properties)
     }
 }
+
+module.exports = BFFLabel

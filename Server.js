@@ -1,9 +1,16 @@
-
+//
 // - Properties
 
 const express = require('express')
 const app = express()
 const port = 3000
+const bodyParser = require('body-parser')
+const helmet = require('helmet')
+
+// - Middlewares
+
+app.use(bodyParser.json())
+app.use(helmet())
 
 // - Routes
 

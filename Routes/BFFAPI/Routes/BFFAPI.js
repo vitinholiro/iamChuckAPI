@@ -7,7 +7,7 @@ BFFRoutes.get('/label', (req, res) => {
     const label = BFFComponents.generateLabelWith("Descrição",
     new BFFLabelProperties("blue", 10, "bold"))
 
-    res.send(JSON.stringify(label))
+    res.json({label});
 })
 
 module.exports = { BFFRoutes }

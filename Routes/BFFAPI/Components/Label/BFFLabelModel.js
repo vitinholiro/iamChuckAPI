@@ -13,6 +13,12 @@ class BFFLabelProperties {
     color = ""
     size = 0
     weight = ""
+
+    constructor(color, size, weight) {
+        this.color = color
+        this.size = size
+        this.weight = weight
+    }
 }
 
-module.exports = BFFLabelModel
+module.exports = { BFFLabelModel, BFFLabelProperties }

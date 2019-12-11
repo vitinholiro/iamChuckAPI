@@ -1,6 +1,6 @@
 const BFFRoutes = require('express').Router()
-const BFFComponents = require('../Components/BFFComponents')
-const { BFFLabelProperties } = require('../Components/Label/BFFLabelModel')
+const BFFComponents = require('../components/BFFComponents')
+const { BFFLabelProperties } = require('../components/Label/BFFLabelModel')
 
 BFFRoutes.get('/label', (req, res) => {
 

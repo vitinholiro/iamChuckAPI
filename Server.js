@@ -9,8 +9,8 @@ const helmet = require('helmet')
 
 // - Routes
 
-const { ChuckRoutes } = require('./Routes/ChuckAPI/Routes/ChuckAPI')
-const { BFFRoutes } = require('./Routes/BFFAPI/Routes/BFFAPI')
+const { ChuckRoutes } = require('./ChuckAPI/Routes/ChuckAPI')
+const { BFFRoutes } = require('./BFFAPI/Routes/BFFAPI')
 
 // - Middlewares
 

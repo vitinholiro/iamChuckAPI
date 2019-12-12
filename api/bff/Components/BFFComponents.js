@@ -1,5 +1,5 @@
 
-const BFFLabel = require('./Label/BFFLabel')
+const BFFLabel = require('./label/BFFLabel')
 
 class BFFComponents {
 

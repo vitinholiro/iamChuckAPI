@@ -1,7 +1,5 @@
 
 class BFFLabelModel {
-    value = ""
-    properties = new BFFLabelProperties()
 
     constructor(value, properties) {
         this.value = value
@@ -10,10 +8,7 @@ class BFFLabelModel {
 }
 
 class BFFLabelProperties {
-    color = ""
-    size = 0
-    weight = ""
-
+    
     constructor(color, size, weight) {
         this.color = color
         this.size = size

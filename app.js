@@ -2,6 +2,8 @@
 // - Properties
 
 require('./api/config/config')
+//require('./api/config/database')
+
 const express = require('express')
 const app = express()
 const port = process.env.PORT

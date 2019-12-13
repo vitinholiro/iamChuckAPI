@@ -1,7 +1,11 @@
-const ChuckRoutes = require('express').Router();
-const axios = require('axios').default;
+import express = require('express');
+import axios from 'axios'
 
-// - GET
+// MARK: Properties
+
+const ChuckRoutes = express.Router()
+
+// MARK: Requests
 
 ChuckRoutes.get('/jokes/random', async (req, res) => {
     const category = req.query.category
@@ -14,4 +18,4 @@ ChuckRoutes.get('/categories', async (req, res) => {
     res.send(JSON.stringify(response.data))
 })
 
-module.exports = { ChuckRoutes }
+export = ChuckRoutes

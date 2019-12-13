@@ -1,6 +1,12 @@
 
-import { BFFLabel } from './label/bff-label'
-import { BFFLabelProperties } from './label/model/bff-label-model'
+import { BFFLabel, BFFTextComponent } from './text-components/label/bff-label'
+import { BFFTextProperties } from './text-components/interface/text-component-interface'
+
+// MARK: Enums
+
+export enum TypeComponent {
+    label
+}
 
 export class BFFComponents {
 
@@ -10,7 +16,10 @@ export class BFFComponents {
 
     // MARK: Functions
 
-    public generateLabelWith(value: string, properties: BFFLabelProperties) {
-        return new BFFLabel().generateWith(value, properties)
+    public text(component: TypeComponent, value: string, properties: BFFTextProperties) : BFFTextComponent  {
+        switch(component) {
+            case TypeComponent.label:
+                return new BFFLabel(value, properties).generate()
+        }
     }
 }

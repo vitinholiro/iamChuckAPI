@@ -12,12 +12,12 @@ const app = express();
 const port = process.env.PORT || 3000
 const helmet = require('helmet')
 
-// - Middlewares
+// MARK: Middlewares
 
 app.use(bodyParser.json())
 app.use(helmet())
 
-// - Routes
+// MARK: Routes
 
 app.use('/chuck-api', ChuckRoutes);
 app.use('/bff-api', HomeRoutes);

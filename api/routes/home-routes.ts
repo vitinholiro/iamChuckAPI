@@ -1,22 +1,21 @@
 import express = require('express');
-import { BFFComponents } from './../bff/components/bff-components'
+import { BFFComponents, TypeComponent } from './../bff/components/bff-components'
 import { BFFPayload } from './../bff/components/bff-payload'
-import { BFFLabelProperties } from './../bff/components/label/model/bff-label-model'
+import { BFFTextProperties } from '../bff/components/text-components/interface/text-component-interface'
 
-//
-// Properties
+// MARK: Properties
 
 const HomeRoutes = express.Router()
 
-// Routes
+// MARK: Routes
 
 HomeRoutes.get('/searched-jokes', (req, res) => {
     const bffComponents = new BFFComponents()
     const bffPayload = new BFFPayload()
 
-    const label = bffComponents.generateLabelWith(
-        'Chuck Norris has so many friends on facebook, he needs 3 accounts',
-        new BFFLabelProperties("#000000", 16, "medium")
+    const label = bffComponents.text(TypeComponent.label,
+        "Chuck Norris has so many friends on facebook, he needs 3 accounts",
+         new BFFTextProperties("#00000", 15, "REGULAR")
     )
 
     res.json(bffPayload.view({label}))

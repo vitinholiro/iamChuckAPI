@@ -1,7 +1,7 @@
 import express = require('express');
-import { BFFComponents, TypeComponent } from './../bff/components/bff-components'
-import { BFFPayload } from './../bff/components/bff-payload'
-import { BFFTextProperties } from '../bff/components/text-components/interface/text-component-interface'
+import { BFFComponents, TypeComponent } from '../../../bff/components/bff-components'
+import { BFFPayload } from '../../../bff/components/bff-payload'
+import { BFFTextProperties } from '../../../bff/components/text-components/interface/text-component-interface'
 
 // MARK: Properties
 

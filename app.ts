@@ -1,9 +1,13 @@
 import express = require('express');
 import bodyParser = require('body-parser')
 
+// MARK: Environment
+
+require('./api/config/config.ts')
+
 // MARK: Routes
 
-import HomeRoutes = require('./api/routes/home-routes')
+import HomeRoutes = require('./api/app/home/routes/home-routes')
 import ChuckRoutes = require('./api/chuck/routes/chuck-routes')
 
 // MARK: Properties
@@ -21,7 +25,6 @@ app.use(helmet())
 
 app.use('/chuck-api', ChuckRoutes);
 app.use('/bff-api', HomeRoutes);
-app.get('/', (req, res) => res.send('Hello World!'))
 
 // MARK: Listen APP
 

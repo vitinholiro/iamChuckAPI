@@ -39,34 +39,55 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 var express = require("express");
-var axios_1 = __importDefault(require("axios"));
+var bff_components_1 = require("../../../bff/components/bff-components");
+var bff_payload_1 = require("../../../bff/components/bff-payload");
+var text_component_interface_1 = require("../../../bff/components/text-components/interface/text-component-interface");
+var home_model_1 = __importDefault(require("./../model/home-model"));
+var home_controller_1 = __importDefault(require("./../controller/home-controller"));
 // MARK: Properties
-var ChuckRoutes = express.Router();
-// MARK: Requests
-ChuckRoutes.get('/jokes/random', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var category, response;
+var HomeRoutes = express.Router();
+// MARK: Routes
+HomeRoutes.get('/home/searched-jokes', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var bffComponents, bffPayload, JokesArray, labels;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                category = req.query.category;
-                return [4 /*yield*/, axios_1.default.get("https://api.chucknorris.io/jokes/random?category=" + category)];
+                bffComponents = new bff_components_1.BFFComponents();
+                bffPayload = new bff_payload_1.BFFPayload();
+                return [4 /*yield*/, new home_controller_1.default().get()];
             case 1:
-                response = _a.sent();
-                res.send(JSON.stringify(response.data));
+                JokesArray = _a.sent();
+                labels = [];
+                JokesArray.forEach(function (joke) {
+                    labels.push(bffComponents.text(bff_components_1.TypeComponent.label, joke.value, new text_component_interface_1.BFFTextProperties("#00000", 15, "REGULAR")));
+                });
+                res.json(bffPayload.view({ labels: labels }));
                 return [2 /*return*/];
         }
     });
 }); });
-ChuckRoutes.get('/categories', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var response;
+HomeRoutes.post('/home/save', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var body, homeModel, saveHomeModel, e_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, axios_1.default.get('https://api.chucknorris.io/jokes/categories')];
+            case 0:
+                body = req.body;
+                homeModel = new home_model_1.default(body);
+                console.log(homeModel);
+                _a.label = 1;
             case 1:
-                response = _a.sent();
-                res.send(JSON.stringify(response.data));
-                return [2 /*return*/];
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, new home_controller_1.default().save(homeModel)];
+            case 2:
+                saveHomeModel = _a.sent();
+                res.sendStatus(201).json(saveHomeModel);
+                return [3 /*break*/, 4];
+            case 3:
+                e_1 = _a.sent();
+                res.sendStatus(400).send(e_1);
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
         }
     });
 }); });
-module.exports = ChuckRoutes;
+module.exports = HomeRoutes;

@@ -38,35 +38,41 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var express = require("express");
-var axios_1 = __importDefault(require("axios"));
-// MARK: Properties
-var ChuckRoutes = express.Router();
-// MARK: Requests
-ChuckRoutes.get('/jokes/random', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var category, response;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                category = req.query.category;
-                return [4 /*yield*/, axios_1.default.get("https://api.chucknorris.io/jokes/random?category=" + category)];
-            case 1:
-                response = _a.sent();
-                res.send(JSON.stringify(response.data));
-                return [2 /*return*/];
-        }
-    });
-}); });
-ChuckRoutes.get('/categories', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var response;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, axios_1.default.get('https://api.chucknorris.io/jokes/categories')];
-            case 1:
-                response = _a.sent();
-                res.send(JSON.stringify(response.data));
-                return [2 /*return*/];
-        }
-    });
-}); });
-module.exports = ChuckRoutes;
+Object.defineProperty(exports, "__esModule", { value: true });
+var home_model_1 = __importDefault(require("./../model/home-model"));
+var HomeController = /** @class */ (function () {
+    function HomeController() {
+    }
+    HomeController.prototype.save = function (home) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, home.save()];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    HomeController.prototype.get = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, home_model_1.default.find()];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    HomeController.prototype.delete = function (home) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, home.remove()];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    return HomeController;
+}());
+exports.default = HomeController;

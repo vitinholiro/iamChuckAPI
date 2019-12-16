@@ -3,7 +3,7 @@ import bodyParser = require('body-parser')
 
 // MARK: Environment
 
-require('./api/config/config.ts')
+require('./api/config/config')
 
 // MARK: Routes
 

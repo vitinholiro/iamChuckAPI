@@ -9,7 +9,7 @@ class Configuration {
         console.log('Environment => ', env);
     
         if (env === 'development' || env === 'test') {
-            var config = require('./Config.json');
+            var config = require('./config.json');
             var envConfig = config[env];
     
             Object.keys(envConfig).forEach((key) => {

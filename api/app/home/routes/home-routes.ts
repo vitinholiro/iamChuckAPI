@@ -4,7 +4,7 @@ import { BFFPayload } from '../../../bff/components/bff-payload'
 import { BFFTextProperties } from '../../../bff/components/text-components/interface/text-component-interface'
 import HomeModel from './../model/home-model'
 import HomeController from './../controller/home-controller'
-import { BFFLabel, BFFTextComponent } from '../../../bff/components/text-components/label/bff-label';
+import { BFFTextComponent } from '../../../bff/components/text-components/label/bff-label';
 
 // MARK: Properties
 
@@ -28,13 +28,15 @@ HomeRoutes.get('/home/searched-jokes', async (req, res) => {
         )
     })
 
-    res.json(bffPayload.view({labels}))
+    res.json(bffPayload.view({
+        labels,
+        shareable: true
+    }))
 })
 
 HomeRoutes.post('/home/save', async (req, res) => {
     const body  = req.body
     const homeModel = new HomeModel(body)
-    console.log(homeModel)
 
     try {
         let saveHomeModel = await new HomeController().save(homeModel)

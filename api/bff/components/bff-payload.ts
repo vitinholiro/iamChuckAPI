@@ -1,4 +1,7 @@
 
+import { BFFViewModel } from './view-components/view/model/bff-view-model'
+import { BFFViewProperties, BFFViewSizeComponentInterface } from './view-components/interface/view-component-interface'
+
 export class BFFPayload {
     
     components(items: JSON) {
@@ -9,9 +12,11 @@ export class BFFPayload {
         }
     }
 
-    view(items: any) {
+    view(items: JSON) {
         return {
-            view: this.components(items)
+            view: this.components(items),
+            properties: BFFViewProperties
         }
     }
+
 }

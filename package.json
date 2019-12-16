@@ -20,7 +20,7 @@
   "devDependencies": {},
   "scripts": {
     "tsc": "tsc",
-    "dev": "ts-node-dev --respawn --transpileOnly app.ts",
+    "dev": "ts-node app.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsc && node ./build/app.js"
   },

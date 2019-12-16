@@ -1,5 +1,6 @@
 
 import mongoose = require('mongoose')
+import * as jsonConfig from './config.json'
 
 class Configuration {
     
@@ -9,15 +10,12 @@ class Configuration {
         console.log('Environment => ', env);
     
         if (env === 'development' || env === 'test') {
-            var config = require('./config.json');
-            var envConfig = config[env];
-    
-            Object.keys(envConfig).forEach((key) => {
-                process.env[key] = envConfig[key];
+            Object.entries(jsonConfig[env]).forEach(([key, value]) => {
+                process.env[key] = value as string
             });
-        }
 
-        this.configureDatabase(process.env.MONGODB_URI as string)
+            this.configureDatabase(process.env.MONGODB_URI as string)
+        }        
     }
     
     configureDatabase(uri: string) {

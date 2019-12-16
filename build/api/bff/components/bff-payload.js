@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var view_component_interface_1 = require("./view-components/interface/view-component-interface");
 var BFFPayload = /** @class */ (function () {
     function BFFPayload() {
     }
@@ -12,7 +13,8 @@ var BFFPayload = /** @class */ (function () {
     };
     BFFPayload.prototype.view = function (items) {
         return {
-            view: this.components(items)
+            view: this.components(items),
+            properties: view_component_interface_1.BFFViewProperties
         };
     };
     return BFFPayload;

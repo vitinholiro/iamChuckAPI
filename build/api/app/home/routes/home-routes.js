@@ -61,7 +61,10 @@ HomeRoutes.get('/home/searched-jokes', function (req, res) { return __awaiter(vo
                 JokesArray.forEach(function (joke) {
                     labels.push(bffComponents.text(bff_components_1.TypeComponent.label, joke.value, new text_component_interface_1.BFFTextProperties("#00000", 15, "REGULAR")));
                 });
-                res.json(bffPayload.view({ labels: labels }));
+                res.json(bffPayload.view({
+                    labels: labels,
+                    shareable: true
+                }));
                 return [2 /*return*/];
         }
     });
@@ -73,7 +76,6 @@ HomeRoutes.post('/home/save', function (req, res) { return __awaiter(void 0, voi
             case 0:
                 body = req.body;
                 homeModel = new home_model_1.default(body);
-                console.log(homeModel);
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);

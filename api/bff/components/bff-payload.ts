@@ -12,7 +12,7 @@ export class BFFPayload {
         }
     }
 
-    view(items: JSON) {
+    view(items: any) {
         return {
             view: this.components(items),
             properties: BFFViewProperties

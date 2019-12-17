@@ -1,5 +1,6 @@
 
 import { BFFViewProperties } from '../../bff/components/view-components/interface/view-component-interface';
+import { BFFViewModel } from './view-components/view/model/bff-view-model';
 
 export class BFFPayload {
     

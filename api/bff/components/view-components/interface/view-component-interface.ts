@@ -1,24 +1,30 @@
 
-export class BFFViewProperties {
+export interface BFFViewPropertiesInterface {
+    width: number
+    height: number
+}
+
+export class BFFViewProperties implements BFFViewPropertiesInterface {
     
     // MARK: Properties
 
-    width: Number
-    height: Number
+    width: number
+    height: number
 
     // MARK: Initializers
 
-    constructor(width: Number, height: Number) {
+    constructor(width: number, height: number) {
         this.width = width
         this.height = height
     }
+    
 }
 
 export class BFFViewAutomaticDimension {
 
-    automatic: Boolean
+    automaticDimension: Boolean
 
-    constructor(automatic: Boolean) {
-        this.automatic = automatic
+    constructor(automaticDimension: Boolean) {
+        this.automaticDimension = automaticDimension
     }
 }

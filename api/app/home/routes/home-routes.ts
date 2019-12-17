@@ -1,9 +1,12 @@
 import express = require('express');
+import HomeModel from './../model/home-model'
+import HomeController from './../controller/home-controller'
+
+// MARK: BFF Imports
+
 import { BFFComponents, TypeComponent } from '../../../bff/components/bff-components'
 import { BFFPayload } from '../../../bff/components/bff-payload'
 import { BFFTextProperties } from '../../../bff/components/text-components/interface/text-component-interface'
-import HomeModel from './../model/home-model'
-import HomeController from './../controller/home-controller'
 import { BFFViewAutomaticDimension } from '../../../bff/components/view-components/interface/view-component-interface';
 
 // MARK: Properties
@@ -29,9 +32,7 @@ HomeRoutes.get('/home/searched-jokes', async (req, res) => {
             bffPayload.view({
                 label,
                 shareable: true
-            }, 
-                new BFFViewAutomaticDimension(true)
-            )
+            }, new BFFViewAutomaticDimension(true))
         )
     })
 

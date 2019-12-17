@@ -1,4 +1,4 @@
-import { BFFViewProperties } from './../../interface/view-component-interface'
+import { BFFViewProperties, BFFViewPropertiesInterface } from './../../interface/view-component-interface'
 
 export class BFFViewModel {
 

@@ -1,27 +1,24 @@
-import { BFFLayerComponentInterface } from './layer-component-interface'
 
-export interface BFFViewComponentInterface {
-    frame: BFFViewSizeComponentInterface
-    layer: BFFLayerComponentInterface
-}
-
-export interface BFFViewSizeComponentInterface {
-    width: number
-    height: number
-}
-
-
-export class BFFViewProperties implements BFFViewComponentInterface{
+export class BFFViewProperties {
     
     // MARK: Properties
 
-    frame: BFFViewSizeComponentInterface
-    layer: BFFLayerComponentInterface
+    width: Number
+    height: Number
 
     // MARK: Initializers
 
-    constructor(frame: BFFViewSizeComponentInterface, layer: BFFLayerComponentInterface) {
-        this.frame = frame
-        this.layer = layer
+    constructor(width: Number, height: Number) {
+        this.width = width
+        this.height = height
+    }
+}
+
+export class BFFViewAutomaticDimension {
+
+    automatic: Boolean
+
+    constructor(automatic: Boolean) {
+        this.automatic = automatic
     }
 }

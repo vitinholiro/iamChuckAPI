@@ -4,7 +4,7 @@ import { BFFPayload } from '../../../bff/components/bff-payload'
 import { BFFTextProperties } from '../../../bff/components/text-components/interface/text-component-interface'
 import HomeModel from './../model/home-model'
 import HomeController from './../controller/home-controller'
-import { BFFTextComponent } from '../../../bff/components/text-components/label/bff-label';
+import { BFFViewAutomaticDimension } from '../../../bff/components/view-components/interface/view-component-interface';
 
 // MARK: Properties
 
@@ -17,22 +17,28 @@ HomeRoutes.get('/home/searched-jokes', async (req, res) => {
     const bffPayload = new BFFPayload()
 
     const JokesArray = await new HomeController().get()
-    var labels: Array<BFFTextComponent> = []
+    var views: Array<any> = []
 
-    JokesArray.forEach( (joke) => {
-        labels.push(
-            bffComponents.text(TypeComponent.label,
-                joke.value,
-                new BFFTextProperties("#00000", 15, "REGULAR")
+    JokesArray.forEach((joke) => {
+        const label = bffComponents.text(TypeComponent.label,
+            joke.value,
+            new BFFTextProperties("#00000", 15, "REGULAR")
+        )
+
+        views.push(
+            bffPayload.view({
+                label,
+                shareable: true
+            }, 
+                new BFFViewAutomaticDimension(true)
             )
         )
     })
 
-    res.json(bffPayload.view({
-        labels,
-        shareable: true
-    }))
+    res.json(views)
 })
+
+
 
 HomeRoutes.post('/home/save', async (req, res) => {
     const body  = req.body
